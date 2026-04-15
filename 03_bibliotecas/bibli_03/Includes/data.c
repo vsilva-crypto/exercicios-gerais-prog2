@@ -108,7 +108,15 @@ int comparaDatas(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2)
 
 int calculaDiasAteMes(int mes, int ano)
 {
+    int quantidadeDeDias = 0;
+    int i;
 
+    for (i = 1; i < mes; i++)
+    {
+        quantidadeDeDias += numeroDiasMes(i, ano);
+    }
+
+    return quantidadeDeDias;
 }
 
 int calculaDiferencaDias(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2)
