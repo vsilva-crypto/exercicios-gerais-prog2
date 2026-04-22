@@ -85,7 +85,7 @@ int numeroDiasMes(int mes, int ano)
     }
 }
 
-int comparaDatas(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2)
+int comparaData(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2)
 {
     if (ano1 > ano2) return 1;
 
@@ -121,5 +121,26 @@ int calculaDiasAteMes(int mes, int ano)
 
 int calculaDiferencaDias(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2)
 {
-    
+    int dias1 = dia1 + calculaDiasAteMes(mes1, ano1);
+    int dias2 = dia2 + calculaDiasAteMes(mes2, ano2);
+
+    int totalDias1 = dias1;
+    int totalDias2 = dias2;
+
+    for (int i = 1; i < ano1; i++)
+    {
+        totalDias1 += verificaBissexto(i) ? 366 : 365;
+    }
+
+    for (int i = 1; i < ano2; i++)
+    {
+        totalDias2 += verificaBissexto(i) ? 366 : 365;
+    }
+
+    int diferenca = totalDias2 - totalDias1;
+
+    if (diferenca < 0)
+        diferenca = -diferenca;
+
+    return diferenca;
 }
